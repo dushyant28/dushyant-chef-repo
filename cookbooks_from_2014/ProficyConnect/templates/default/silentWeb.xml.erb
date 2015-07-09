@@ -1,0 +1,5 @@
+<SetupData>
+<% @node['proficy']['config']['web'].each do |key, value| %>
+<<%= key %>><%= value %></<%= key %>>
+<% end %>
+</SetupData>

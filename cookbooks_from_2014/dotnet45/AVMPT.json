@@ -1,0 +1,5 @@
+{
+  "cookbookDisplayName": ".NET Framework 4.5.1",
+  "cookbookType": "Standalone",
+  "recipes": ["default"]
+}

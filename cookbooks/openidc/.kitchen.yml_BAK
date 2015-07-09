@@ -1,0 +1,36 @@
+---
+driver:
+  name: ec2
+  region: 'us-east-1'
+  availability_zone: 'us-east-1a'
+  aws_ssh_key_id: <%=ENV['KEY_NAME']%>
+  ssh_key: <%=ENV['KEY_PATH']%>
+  image_id: ami-368b9b5e
+  flavor_id: t2.small
+  subnet_id: subnet-e48b3abd
+  security_group_ids: ["sg-cf511cab", "sg-a25201c6", "sg-40a63324", "sg-0311a066", "sg-06365662"]
+  tags: 
+    Name: <%=ENV['KITCHEN_TAG_NAME']%>
+    app: "openidc"
+    role: "app"
+    env: "prod"
+    CreatedBy: <%=ENV['KITCHEN_TAG_CREATEDBY']%>
+    UAI: "UAI2000091"
+  username: gecloud
+  ebs_delete_on_termination: true
+  associate_public_ip: false
+
+provisioner:
+  name: chef_solo
+ 
+platforms:
+  - name: Centos
+    driver:
+      image_id: ami-368b9b5e
+      username: gecloud
+
+suites:
+  - name: default
+    run_list:
+      - recipe[openidc::default]
+    attributes:

@@ -1,0 +1,36 @@
+---
+driver:
+  name: vagrant
+  # vagrantfile_erb: Vagrantfile.erb
+  http_proxy: <%= ENV['http_proxy'] %>
+  https_proxy: <%= ENV['https_proxy'] %>
+  no_proxy: <%= ENV['no_proxy'] %>
+  synced_folders:
+    - [".", "/vagrant", "create: true"]
+
+provisioner:
+  name: chef_zero
+  require_chef_omnibus: 12.3.0
+  client_rb:
+    http_proxy: <%= ENV['http_proxy'] %>
+    https_proxy: <%= ENV['https_proxy'] %>
+    no_proxy: <%= ENV['no_proxy'] %>
+platforms:
+  - name: oracle-66
+    driver_config:
+      box: oel66
+      box_url: https://s3.amazonaws.com/gehc.preprod.useast1.swrepo/Platforms/Vagrant/oel66-nocm12.2.1-1.0.15.box
+  - name: test-centos70
+    driver_config:
+      box: test-centos-70
+      box_url: https://github.com/holms/vagrant-centos7-box/releases/download/7.1.1503.001/CentOS-7.1.1503-x86_64-netboot.box
+  - name: centos-66
+    driver_config:
+      box: centos-66
+      box_url: https://github.com/tommy-muehle/puppet-vagrant-boxes/releases/download/1.0.0/centos-6.6-x86_64.box
+
+suites:
+  - name: default
+    run_list:
+      - recipe[openidc::default]
+    attributes:

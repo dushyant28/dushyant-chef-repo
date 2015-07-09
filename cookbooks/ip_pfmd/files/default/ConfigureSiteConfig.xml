@@ -1,0 +1,9 @@
+<SetupData>
+  <SiteDeploymentsToUpdate>
+    <ServiceDeploymentInfo>
+      <ServiceContainerName>PfMD</ServiceContainerName>
+      <ServiceNameSpace>SOAProject</ServiceNameSpace>
+      <ServerInstanceName>SOAServer</ServerInstanceName>
+    </ServiceDeploymentInfo>
+  </SiteDeploymentsToUpdate>
+</SetupData>

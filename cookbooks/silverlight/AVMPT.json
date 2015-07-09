@@ -1,0 +1,5 @@
+{
+  "cookbookDisplayName": "Silverlight 5",
+  "cookbookType": "Standalone",
+  "recipes": ["plugin", "sdk", "both"]
+}

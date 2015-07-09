@@ -1,0 +1,5 @@
+{
+  "cookbookDisplayName": "Powershell 4",
+  "cookbookType": "Standalone",
+  "recipes": ["default"]
+}

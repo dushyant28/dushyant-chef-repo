@@ -1,0 +1,5 @@
+{
+  "cookbookDisplayName": "SqlServer",
+  "cookbookType": "Standalone",
+  "recipes": ["2012", "2008_R2"]
+}

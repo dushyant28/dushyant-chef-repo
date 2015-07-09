@@ -1,0 +1,10 @@
+name 'ip_openidc'
+maintainer 'The Authors'
+maintainer_email 'you@example.com'
+license 'all_rights'
+description 'Installs/Configures ip_openidc'
+long_description 'Installs/Configures ip_openidc'
+version '0.1.0'
+
+depends 'openidc'
+depends 'apache2'

@@ -1,0 +1,43 @@
+#GE OpenID Connect configuration
+#Provided by Web Access Management Team
+
+# Path which should be protected by this module. Default is "/" (everything.)
+# Attribute based authorization rules can be added. for more info: sc.ge.com/*oidc
+<Location />
+   AuthType openid-connect
+   Require valid-user
+</Location>
+
+#Ping OpenID Connect Configuration URL
+OIDCProviderMetadataURL <%= node['apache']['openidc']['OIDCProviderMetadataURL'] %>
+
+############################
+#### Client information ####
+############################
+# Client ID. Obtain from sc.ge.com/*oidc
+OIDCClientID <%= node['apache']['openidc']['OIDCClientID'] %>
+
+# Client secret. Must keep secret. Obtain from sc.ge.com/*oidc
+OIDCClientSecret <%= node['apache']['openidc']['OIDCClientSecret'] %>
+
+# Redirect URI. Empty location where mod_auth_openidc can accept tokens from Ping.
+# IMPORTANT: must be inside of "protected resource" path above.
+# IMPORTANT: must be registered exactly with Ping. To change, please visit sc.ge.com/*oidc
+OIDCRedirectURI <%= node['apache']['openidc']['OIDCRedirectURI'] %>
+
+
+# Scopes
+# include "openid" and "profile" for SSO, Fname, Lname, role, email, business, sub-business
+# additional scopes: register your client at sc.ge.com/*apidev to be authorized for additional API services
+OIDCScope <%= node['apache']['openidc']['OIDCScope'] %>
+
+# Set a password for crypto purposes. Used in httpd module only.
+OIDCCryptoPassphrase <%= node['apache']['openidc']['OIDCCryptoPassphrase'] %>
+
+# variable where SSO is passed
+OIDCAuthNHeader <%= node['apache']['openidc']['OIDCAuthNHeader'] %>
+OIDCRemoteUserClaim <%= node['apache']['openidc']['OIDCRemoteUserClaim'] %>
+
+
+#prefix for all attributes
+OIDCClaimPrefix <%= node['apache']['openidc']['OIDCClaimPrefix'] %>
